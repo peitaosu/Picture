@@ -1,9 +1,7 @@
 from PIL import Image, ImageChops, ImageEnhance
 import os
 
-quality = 90
-
-def ela(origin, save_path=None):
+def ela(origin, quality=90, save_path=None):
 
     ori_im = Image.open(origin)
     tmp = origin + ".tmp"
