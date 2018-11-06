@@ -1,4 +1,3 @@
-import os
 from PIL import Image, ImageDraw, ImageFont
 
 
@@ -15,6 +14,7 @@ def add_watermark(image, watermark, pos_x, pos_y, save="new.jpg", font="C:\\Wind
     return 0
 
 if __name__ == '__main__':
+    import os
     in_folder = "."
     for image in os.listdir(in_folder):
         image_name = ".".join(image.split(".")[:-1])
