@@ -14,8 +14,17 @@ def add_watermark(image, watermark, pos_x, pos_y, save="new.jpg", font="C:\\Wind
     return 0
 
 if __name__ == '__main__':
-    import os
-    in_folder = "."
-    for image in os.listdir(in_folder):
+    import os, optparse
+    parser = optparse.OptionParser()
+    parser.add_option("--in_folder", dest="in_folder", help="read pictures from folder")
+    parser.add_option("--watermark", dest="watermark", help="watermark text")
+    parser.add_option("--pos_x", dest="pos_x", help="watermark position: x")
+    parser.add_option("--pos_y", dest="pos_y", help="watermark position: y")
+    parser.add_option("--font", dest="font", help="watermark font")
+    parser.add_option("--size", dest="size", help="watermark size")
+    parser.add_option("--color", dest="color", help="watermark color")
+    (options, args) = parser.parse_args()
+
+    for image in os.listdir(options.in_folder):
         image_name = ".".join(image.split(".")[:-1])
-        add_watermark(os.path.join(in_folder, image), "Tony Su", -700, -300, os.path.join(in_folder, image_name + "_new.jpg"), "C:\\Windows\\Fonts\\Halimun.ttf", 100, color="#FFFFFF")
+        add_watermark(os.path.join(options.in_folder, image), options.watermark, options.pos_x, options.pos_y, os.path.join(options.in_folder, image_name + "_marked.jpg"), options.font, options.size, options.color)
