@@ -1,5 +1,5 @@
 from PIL import Image, ImageChops, ImageEnhance
-import os
+import os, sys
 
 def ela(origin, quality=90, save_path=None):
 
@@ -21,4 +21,4 @@ def ela(origin, quality=90, save_path=None):
     os.remove(tmp)
 
 if __name__=="__main__":
-    ela("Input.JPG")
+    ela(sys.argv[1])
